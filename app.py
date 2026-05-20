@@ -530,7 +530,7 @@ def generate_workout(user):
                 "max_tokens": 3000,
                 "messages": [{"role": "user", "content": prompt}]
             },
-            timeout=30
+            timeout=60
         )
         result = response.json()
         text = result["content"][0]["text"]
@@ -553,6 +553,7 @@ def generate_workout(user):
         return jsonify({"plan": plan, "source": "ai"})
 
     except Exception as e:
+        import traceback; traceback.print_exc()
         return jsonify({"error": str(e), "source": "error"}), 500
 
 
