@@ -491,7 +491,7 @@ def generate_workout(user):
             cur2.close(); conn2.close()
         except Exception:
             pass
-    variation_text = f" [Вариация #{variation} — создай план ОТЛИЧАЮЩИЙСЯ от предыдущих: другие упражнения, другой порядок, другой акцент]" if variation else ""
+    variation_text = f" [SEED:{variation}. ОБЯЗАТЕЛЬНО используй ДРУГОЙ набор упражнений чем обычно. Запрещено повторять стандартный набор. Выбери случайные упражнения из списка, не самые популярные]" if variation else ""
     prompt = f"""Ты персональный фитнес-тренер.{variation_text} Составь программу тренировок для:
 Пол: {gender_label}, Возраст: {user['age']} лет, Вес: {user['weight']} кг, Рост: {user['height']} см
 Место: {place_label}, Цель: {user['goal']}, Уровень: {user['level']}
