@@ -267,6 +267,7 @@ def register():
     days_per_week = int(data.get("days_per_week") or 3)
     days_per_week = max(2, min(6, days_per_week))
     hashed = hash_password(password)
+    restrictions = data.get("restrictions", "")
     cur.execute("""
         INSERT INTO users (email, name, password, gender, age, weight, height,
                            place, goal, level, days_per_week, promo_code, access_type, access_expires, restrictions)
